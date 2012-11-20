@@ -7,3 +7,6 @@ A PHP SOAP client testing tool
 2. Upload files to a PHP 5.X.X compatible server.
 3. Visit the soap.client.php files in a browser.
 4. Follow the steps on the page to test a SOAP server using your new SOAP Client testing tool.
+
+DEMO Current Available at: 
+http://myhostnameservers.com/test/PHP-SOAP-client-testing-tool/soap.client.php
