@@ -356,9 +356,11 @@ function get_response_structs($client) {
 function get_soap_response_array($soap_response_format, $soap_response_array = array(), $objName = '') {
 	foreach($soap_response_format as $name => &$type) {
 		//echo 'Building '.$objName.' response object: ('.$type.')'.$name.PHP_EOL;
+
 		switch ($type) {
 			case 'string':
-				$soap_response_array[$name] = strval($_POST[$objName.$name]);
+				if(empty($_POST[$objName.$name])) $soap_response_array[$name] = NULL;
+				else $soap_response_array[$name] = strval($_POST[$objName.$name]);
 				break;
 			case 'int':
 				$soap_response_array[$name] = intval($_POST[$objName.$name]);
@@ -378,7 +380,7 @@ function get_soap_response_array($soap_response_format, $soap_response_array = a
 				break;
 		}
 	}
-	
+	//if(empty($objName)) $soap_response_array['composite']['RepID'] =  new SoapVar('<ns1:RepID xsi:nil="true" />', XSD_ANYXML);
 	//if(empty($objName)) var_export($soap_response_array);
 	return $soap_response_array;
 }
